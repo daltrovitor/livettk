@@ -273,6 +273,9 @@ export default function Scoreboard({ initialMatch }: { initialMatch?: MatchData 
               <h3 className="text-base sm:text-xl font-black uppercase tracking-wide text-white drop-shadow-md px-1 truncate max-w-full">
                 {match.teamAName}
               </h3>
+              <div className="mt-1 bg-black/40 border border-white/30 px-2.5 py-0.5 rounded-full text-xs font-black text-amber-300 tracking-wider uppercase shadow">
+                DIGITE 13
+              </div>
 
               <div className="mt-3 text-4xl sm:text-5xl font-black font-mono text-white tracking-tight drop-shadow-lg">
                 {match.teamAScore.toLocaleString()}
@@ -297,6 +300,9 @@ export default function Scoreboard({ initialMatch }: { initialMatch?: MatchData 
               <h3 className="text-base sm:text-xl font-black uppercase tracking-wide text-white drop-shadow-md px-1 truncate max-w-full">
                 {match.teamBName}
               </h3>
+              <div className="mt-1 bg-black/40 border border-white/30 px-2.5 py-0.5 rounded-full text-xs font-black text-amber-300 tracking-wider uppercase shadow">
+                DIGITE 22
+              </div>
 
               <div className="mt-3 text-4xl sm:text-5xl font-black font-mono text-white tracking-tight drop-shadow-lg">
                 {match.teamBScore.toLocaleString()}
@@ -336,6 +342,7 @@ export default function Scoreboard({ initialMatch }: { initialMatch?: MatchData 
               <img src={match.teamAPhoto} alt={match.teamAName} onError={(e) => { (e.target as HTMLImageElement).src = DEFAULT_LULA_PHOTO; }} className="w-24 h-24 rounded-2xl object-cover border-2 border-white" />
               <div>
                 <h3 className="text-2xl font-black text-red-400 uppercase">{match.teamAName}</h3>
+                <span className="inline-block mt-1 bg-red-900/60 border border-red-500/50 px-3 py-1 rounded-full text-xs font-black text-amber-300 uppercase">DIGITE 13</span>
                 <p className="text-4xl font-black font-mono text-white mt-2">{match.teamAScore.toLocaleString()} votos</p>
               </div>
             </div>
@@ -346,6 +353,7 @@ export default function Scoreboard({ initialMatch }: { initialMatch?: MatchData 
               <img src={match.teamBPhoto} alt={match.teamBName} onError={(e) => { (e.target as HTMLImageElement).src = DEFAULT_BOLSONARO_PHOTO; }} className="w-24 h-24 rounded-2xl object-cover border-2 border-white" />
               <div>
                 <h3 className="text-2xl font-black text-blue-400 uppercase">{match.teamBName}</h3>
+                <span className="inline-block mt-1 bg-blue-900/60 border border-blue-500/50 px-3 py-1 rounded-full text-xs font-black text-amber-300 uppercase">DIGITE 22</span>
                 <p className="text-4xl font-black font-mono text-white mt-2">{match.teamBScore.toLocaleString()} votos</p>
               </div>
             </div>

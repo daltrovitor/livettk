@@ -307,6 +307,9 @@ export default function ObsOverlay() {
             <h3 className="text-base sm:text-xl font-black uppercase tracking-wide text-white drop-shadow-md px-1 truncate max-w-full">
               {match.teamAName}
             </h3>
+            <div className="mt-1 bg-black/50 border border-white/30 px-2.5 py-0.5 rounded-full text-xs font-black text-amber-300 tracking-wider uppercase shadow-md animate-pulse">
+              DIGITE 13
+            </div>
 
             <div className="mt-3 text-3xl sm:text-5xl font-black font-mono text-white tracking-tight drop-shadow-lg">
               {match.teamAScore.toLocaleString()}
@@ -333,6 +336,9 @@ export default function ObsOverlay() {
             <h3 className="text-base sm:text-xl font-black uppercase tracking-wide text-white drop-shadow-md px-1 truncate max-w-full">
               {match.teamBName}
             </h3>
+            <div className="mt-1 bg-black/50 border border-white/30 px-2.5 py-0.5 rounded-full text-xs font-black text-amber-300 tracking-wider uppercase shadow-md animate-pulse">
+              DIGITE 22
+            </div>
 
             <div className="mt-3 text-3xl sm:text-5xl font-black font-mono text-white tracking-tight drop-shadow-lg">
               {match.teamBScore.toLocaleString()}
