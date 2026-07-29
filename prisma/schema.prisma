@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Match {
+  id            String   @id @default(uuid())
+  title         String   @default("BATALHA POPULAR")
+  teamAName     String   @default("Lula")
+  teamAPhoto    String   @default("https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=400&h=400&fit=crop")
+  teamAColor    String   @default("#dc2626")
+  teamAScore    Int      @default(0)
+  teamBName     String   @default("Bolsonaro")
+  teamBPhoto    String   @default("https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&h=400&fit=crop")
+  teamBColor    String   @default("#2563eb")
+  teamBScore    Int      @default(0)
+  status        String   @default("VOTING") // VOTING, PAUSED, ENDED
+  multiplier    Int      @default(1)
+  ruleTeamA     String   @default("13,lula,vermelho")
+  ruleTeamB     String   @default("22,bolsonaro,azul")
+  soundEnabled  Boolean  @default(true)
+  currentLeader String   @default("TIE")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model GiftRule {
+  id         String @id @default(uuid())
+  giftName   String
+  giftId     String @unique
+  pointValue Int    @default(50)
+  icon       String @default("🎁")
+  targetTeam String @default("BOTH") // 'A', 'B', 'BOTH'
+}
+
+model VoteLog {
+  id        String   @id @default(uuid())
+  matchId   String
+  username  String
+  avatar    String?
+  type      String   // COMMENT, LIKE, GIFT, ADMIN
+  payload   String?
+  points    Int
+  team      String   // A or B
+  timestamp DateTime @default(now())
+}
+
+model Donor {
+  id          String   @id @default(uuid())
+  username    String   @unique
+  avatar      String?
+  totalPoints Int      @default(0)
+  totalGifts  Int      @default(0)
+  updatedAt   DateTime @updatedAt
+}
