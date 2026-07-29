@@ -354,12 +354,16 @@ export default function AdminPanel() {
                 ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40"
                 : tiktokStatus.status === "connecting"
                 ? "bg-amber-500/20 text-amber-400 border border-amber-500/40 animate-pulse"
+                : tiktokStatus.status === "error"
+                ? "bg-rose-500/20 text-rose-400 border border-rose-500/40"
                 : "bg-slate-800 text-slate-400 border border-slate-700"
             }`}>
               {tiktokStatus.status === "connected"
                 ? `● CONECTADO (@${tiktokStatus.username})`
                 : tiktokStatus.status === "connecting"
                 ? `⌛ CONECTANDO...`
+                : tiktokStatus.status === "error"
+                ? `❌ ERRO NA CONEXÃO`
                 : "○ DESCONECTADO"}
             </span>
           </div>
@@ -383,12 +387,20 @@ export default function AdminPanel() {
             ) : (
               <button
                 type="submit"
-                className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl shadow-lg transition-transform hover:scale-105"
+                disabled={tiktokStatus.status === "connecting"}
+                className="px-6 py-3 bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-black text-xs uppercase rounded-xl shadow-lg transition-transform hover:scale-105"
               >
-                Conectar na Live
+                {tiktokStatus.status === "connecting" ? "Conectando..." : "Conectar na Live"}
               </button>
             )}
           </form>
+
+          {tiktokStatus.status === "error" && tiktokStatus.message && (
+            <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-400 text-xs font-mono flex items-center gap-2">
+              <span>⚠️</span>
+              <span><strong>Motivo da falha:</strong> {tiktokStatus.message}</span>
+            </div>
+          )}
 
           {/* Quick Gift Simulation Buttons */}
           <div className="pt-2 border-t border-slate-800/80">
