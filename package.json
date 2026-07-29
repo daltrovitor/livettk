@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "node server.mjs",
     "server": "node server.mjs",
-    "build": "next build",
-    "start": "node server.mjs",
+    "build": "prisma generate && next build",
+    "postinstall": "prisma generate",
+    "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
-    "@prisma/client": "^7.9.1",
+    "@prisma/client": "^6.4.0",
     "@supabase/supabase-js": "^2.111.0",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
@@ -35,7 +36,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
-    "prisma": "^7.9.1",
+    "prisma": "^6.4.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
